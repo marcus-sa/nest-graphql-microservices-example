@@ -2,7 +2,6 @@ type Review @key(fields: "id") {
     id: ID!
     body: String
     author: User @provides(fields: "username")
-    # product: Product
 }
 
 extend type User @key(fields: "id") {
@@ -10,8 +9,3 @@ extend type User @key(fields: "id") {
     username: String @external
     reviews: [Review]
 }
-
-#extend type Product @key(fields: "upc") {
-#    upc: String! @external
-#    reviews: [Review]
-#}

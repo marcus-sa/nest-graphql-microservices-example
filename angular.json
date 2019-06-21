@@ -1,0 +1,276 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "api-gateway": {
+      "root": "apps/api/gateway",
+      "sourceRoot": "apps/api/gateway/src",
+      "projectType": "application",
+      "prefix": "api-gateway",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/api/gateway",
+            "main": "apps/api/gateway/src/main.ts",
+            "tsConfig": "apps/api/gateway/tsconfig.app.json",
+            "assets": [
+              "apps/api/gateway/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/gateway/src/environments/environment.ts",
+                  "with": "apps/api/gateway/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api-gateway:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/api/gateway/tsconfig.app.json",
+              "apps/api/gateway/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/api/gateway/jest.config.js",
+            "tsConfig": "apps/api/gateway/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "services-products": {
+      "root": "apps/services/products",
+      "sourceRoot": "apps/services/products/src",
+      "projectType": "application",
+      "prefix": "services-products",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/services/products",
+            "main": "apps/services/products/src/main.ts",
+            "tsConfig": "apps/services/products/tsconfig.app.json",
+            "assets": [
+              "apps/services/products/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/services/products/src/environments/environment.ts",
+                  "with": "apps/services/products/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "services-products:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/services/products/tsconfig.app.json",
+              "apps/services/products/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/services/products/jest.config.js",
+            "tsConfig": "apps/services/products/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "services-accounts": {
+      "root": "apps/services/accounts",
+      "sourceRoot": "apps/services/accounts/src",
+      "projectType": "application",
+      "prefix": "services-accounts",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/services/accounts",
+            "main": "apps/services/accounts/src/main.ts",
+            "tsConfig": "apps/services/accounts/tsconfig.app.json",
+            "assets": [
+              "apps/services/accounts/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/services/accounts/src/environments/environment.ts",
+                  "with": "apps/services/accounts/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "services-accounts:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/services/accounts/tsconfig.app.json",
+              "apps/services/accounts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/services/accounts/jest.config.js",
+            "tsConfig": "apps/services/accounts/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "distributed": {
+      "root": "libs/distributed",
+      "sourceRoot": "libs/distributed/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/distributed/tsconfig.lib.json",
+              "libs/distributed/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/distributed/jest.config.js",
+            "tsConfig": "libs/distributed/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "services-reviews": {
+      "root": "apps/services/reviews",
+      "sourceRoot": "apps/services/reviews/src",
+      "projectType": "application",
+      "prefix": "services-reviews",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/services/reviews",
+            "main": "apps/services/reviews/src/main.ts",
+            "tsConfig": "apps/services/reviews/tsconfig.app.json",
+            "assets": [
+              "apps/services/reviews/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/services/reviews/src/environments/environment.ts",
+                  "with": "apps/services/reviews/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "services-reviews:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/services/reviews/tsconfig.app.json",
+              "apps/services/reviews/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/services/reviews/jest.config.js",
+            "tsConfig": "apps/services/reviews/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/nest",
+    "packageManager": "yarn"
+  },
+  "schematics": {},
+  "defaultProject": "api-gateway"
+}

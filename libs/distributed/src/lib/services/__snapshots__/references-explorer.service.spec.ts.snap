@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReferencesExplorerService explore should return User with __resolveReference 1`] = `
+Object {
+  "User": Object {
+    "__resolveReference": [Function],
+  },
+}
+`;
+
+exports[`ReferencesExplorerService explore should return resolver with __resolveReference property 1`] = `
+Object {
+  "User": Object {
+    "__resolveReference": [Function],
+  },
+}
+`;

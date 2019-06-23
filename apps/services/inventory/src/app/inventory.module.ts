@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLFederationModule } from '@nestjs/graphql';
 import { join } from 'path';
 
-import { AccountsResolver } from './accounts.resolver';
+import { InventoryResolver } from './inventory.resolver';
 
 @Module({
   imports: [
@@ -10,6 +10,6 @@ import { AccountsResolver } from './accounts.resolver';
       typePaths: [join(__dirname, '**/*.graphql')]
     }),
   ],
-  providers: [AccountsResolver],
+  providers: [InventoryResolver],
 })
-export class AccountsModule {}
+export class InventoryModule {}

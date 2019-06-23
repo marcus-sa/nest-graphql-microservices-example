@@ -1,13 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 
-import { GraphqlDistributedGatewayModule } from '@ngme/distributed';
-import { environment } from './environments/environment';
+import { GatewayModule } from './app/gateway.module';
 
 (async () => {
-  const app = await NestFactory.create(
-    GraphqlDistributedGatewayModule.forRoot(
-      environment.gateway,
-    ),
-  );
+  const app = await NestFactory.create(GatewayModule);
   await app.listen(3000);
 })();

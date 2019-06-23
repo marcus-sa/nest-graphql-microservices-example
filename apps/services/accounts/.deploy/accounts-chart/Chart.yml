@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Accounts service Helm chart
+name: accounts-chart
+version: 0.0.1

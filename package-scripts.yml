@@ -1,0 +1,11 @@
+scripts:
+  dev:
+    #default: series "nps dev.services" "nps dev.api.gateway"
+    api:
+      gateway: tsnd -r tsconfig-paths/register apps/api/gateway/src/main.ts
+    services:
+      default: concurrently "nps dev.services.reviews" "nps dev.services.accounts" "nps dev.services.products" "nps dev.services.inventory"
+      reviews: tsnd -r tsconfig-paths/register apps/services/reviews/src/main.ts
+      accounts: tsnd -r tsconfig-paths/register apps/services/accounts/src/main.ts
+      products: tsnd -r tsconfig-paths/register apps/services/products/src/main.ts
+      inventory: tsnd -r tsconfig-paths/register apps/services/inventory/src/main.ts

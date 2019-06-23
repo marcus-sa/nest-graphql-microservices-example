@@ -4,5 +4,5 @@ import { AccountsModule } from './app/accounts.module';
 
 (async () => {
   const app = await NestFactory.create(AccountsModule);
-  await app.listen(4001);
+  await app.listen(4000);
 })();

@@ -17,10 +17,10 @@
     "services-accounts": {
       "tags": []
     },
-    "distributed": {
+    "services-reviews": {
       "tags": []
     },
-    "services-reviews": {
+    "services-inventory": {
       "tags": []
     }
   }

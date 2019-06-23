@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+	name: prisma-config
+	namespace: accounts
+	labels:
+		stage: production
+		name: prisma
+		app: prisma
+data:
+	PRISMA_CONFIG: |
+		port: 4466
+		# uncomment the next line and provide the env var PRISMA_MANAGEMENT_API_SECRET=my-secret to activate cluster security
+		# managementApiSecret: my-secret
+		databases:
+			default:
+				connector: postgres
+				host: postgres
+				port: 5432
+				user: prisma
+				password: prisma

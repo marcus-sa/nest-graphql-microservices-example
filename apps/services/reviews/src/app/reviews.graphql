@@ -9,3 +9,8 @@ extend type User @key(fields: "id") {
     username: String @external
     reviews: [Review]
 }
+
+extend type Product @key(fields: "upc") {
+    upc: String! @external
+    reviews: [Review]
+}

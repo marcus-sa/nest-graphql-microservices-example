@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+	name: postgres-disk
+	namespace: accounts
+	labels:
+		stage: production
+		name: postgres
+		app: postgres
+spec:
+	accessModes:
+		- ReadWriteOnce
+	resources:
+		requests:
+			storage: 20Gi

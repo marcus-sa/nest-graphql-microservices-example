@@ -1,0 +1,6 @@
+dependencies:
+	- name: prisma
+		version: 1.2.1
+		repository: "https://kubernetes-charts.storage.googleapis.com/"
+		condition: prisma.enabledkubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+

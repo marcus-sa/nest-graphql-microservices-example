@@ -1,6 +1,4 @@
-import { Query, ResolveProperty, Resolver } from '@nestjs/graphql';
-
-import { ResolveReference } from '@ngme/distributed';
+import { ResolveReference, ResolveProperty, Resolver } from '@nestjs/graphql';
 
 const usernames = [
   { id: "1", username: "@ada" },
@@ -36,14 +34,20 @@ const reviews = [
 
 @Resolver('Review')
 export class ReviewsResolver {
-  @ResolveProperty('Author')
+  @ResolveProperty()
   author(review) {
     return { __typename: 'User', id: review.authorID };
   }
 
   @Resolver('User')
-  @ResolveProperty()
-  reviews(user) {
+  @ResolveProperty('reviews')
+  productReviews(product) {
+    return reviews.filter(review => review.product.upc === product.upc);
+  }
+
+  @Resolver('User')
+  @ResolveProperty('reviews')
+  userReviews(user) {
     return reviews.filter(review => review.authorID === user.id);
   }
 

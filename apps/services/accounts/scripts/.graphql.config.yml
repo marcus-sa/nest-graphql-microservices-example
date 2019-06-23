@@ -1,0 +1,11 @@
+projects:
+  database:
+    schemaPath: ../src/generated/prisma-types.graphql
+    extensions:
+      endpoints:
+        default: http://localhost:4466
+      codegen:
+        - generator: prisma-binding
+          language: typescript
+          output:
+            binding: ../src/generated/prisma.binding.ts

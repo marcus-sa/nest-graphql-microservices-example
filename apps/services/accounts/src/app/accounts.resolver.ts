@@ -1,6 +1,4 @@
-import { Query, Resolver } from '@nestjs/graphql';
-
-import { ResolveReference } from '@ngme/distributed';
+import { Query, Resolver, ResolveReference } from '@nestjs/graphql';
 
 const users = [
   {
@@ -21,12 +19,12 @@ const users = [
 export class AccountsResolver {
   @Query()
   me() {
-    return users[0];
+    return users;
   }
 
   @Resolver('User')
   @ResolveReference()
-  user({ id }: typeof users[0]) {
+  user({ id }) {
     return users.find(user => user.id === id);
   }
 }

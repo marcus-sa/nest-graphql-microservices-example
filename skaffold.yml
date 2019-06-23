@@ -1,0 +1,26 @@
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+	artifacts:
+		- image: api-gateway
+			context: apps/api/gateway
+		- image: accounts-service
+			context: apps/services/accounts
+		- image: inventory-service
+			context: apps/services/inventory
+		- image: products-service
+			context: apps/services/products
+		- image: reviews-service
+			context: apps/services/reviews
+deploy:
+	kubectl:
+		manifests:
+			- apps/**/*.deployment.yml
+			- apps/**/*.service.yml
+			- apps/**/*.ingress.yml
+			- apps/**/*.namespace.yml
+			- apps/**/*.config-map.yml
+profiles:
+	- name: cloudbuild
+		build:
+			googleCloudBuild: {}

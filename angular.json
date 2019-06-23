@@ -177,33 +177,6 @@
         }
       }
     },
-    "distributed": {
-      "root": "libs/distributed",
-      "sourceRoot": "libs/distributed/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/distributed/tsconfig.lib.json",
-              "libs/distributed/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/distributed/jest.config.js",
-            "tsConfig": "libs/distributed/tsconfig.spec.json"
-          }
-        }
-      }
-    },
     "services-reviews": {
       "root": "apps/services/reviews",
       "sourceRoot": "apps/services/reviews/src",
@@ -258,6 +231,64 @@
           "options": {
             "jestConfig": "apps/services/reviews/jest.config.js",
             "tsConfig": "apps/services/reviews/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "services-inventory": {
+      "root": "apps/services/inventory",
+      "sourceRoot": "apps/services/inventory/src",
+      "projectType": "application",
+      "prefix": "services-inventory",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/services/inventory",
+            "main": "apps/services/inventory/src/main.ts",
+            "tsConfig": "apps/services/inventory/tsconfig.app.json",
+            "assets": [
+              "apps/services/inventory/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/services/inventory/src/environments/environment.ts",
+                  "with": "apps/services/inventory/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "services-inventory:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/services/inventory/tsconfig.app.json",
+              "apps/services/inventory/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/services/inventory/jest.config.js",
+            "tsConfig": "apps/services/inventory/tsconfig.spec.json"
           }
         }
       }

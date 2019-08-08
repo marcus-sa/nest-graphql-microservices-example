@@ -14,11 +14,8 @@ profiles:
 
 build:
 	googleCloudBuild:
-		projectId: {$PROJECT_ID}
+		projectId: $PROJECT_ID
 	artifacts:
 		- image: api-gateway
 			bazel:
 				target: //apps/api/gateway:api_gateway_image.tar
-
-googleCloudBuild:
-	projectId: ${PROJECT_ID}

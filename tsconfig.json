@@ -7,12 +7,18 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "esnext",
+    "target": "es2017",
     "module": "commonjs",
     "importHelpers": true,
     "typeRoots": ["node_modules/@types"],
+		"downlevelIteration": true,
     "lib": ["esnext", "dom"],
-    "baseUrl": "."
+    "baseUrl": ".",
+		"paths": {
+			"@ngme/*": [
+				"libs/*/src/index.ts"
+			]
+		}
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,16 +1,16 @@
-endpoint: http://localhost:4466
+endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: ../src/assets/datamodel.prisma
+
+disableAuth: true
 
 seed:
   import: ../src/assets/seed.graphql
 
-# Download the GraphQL schema of the Prisma API into
-# `src/generated/prisma.graphql` (as specified in `.graphqlconfig.yml`).
-hooks:
-  post-deploy:
-    - graphql get-schema --project database
+generate:
+	- generator: typescript-client
+		output: ../api/src/app/prisma/client
 
 # If specified, the `secret` must be used to generate a JWT which is attached
 # to the `Authorization` header of HTTP requests made against the Prisma API.
 # Info: https://www.prisma.io/docs/reference/prisma-api/concepts-utee3eiquo#authentication
-# secret: mysecret123
+secret: ${env:PRISMA_SECRET}

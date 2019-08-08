@@ -8,12 +8,15 @@ load("@npm_bazel_typescript//:index.bzl", "ts_library")
 package(default_visibility = ["//visibility:public"])
 
 ts_library(
-    name = "api_gateway",
+    name = "accounts_service",
     srcs = glob(
         include = ["**/*.ts"],
         exclude = ["**/*spec.ts"],
     ),
     deps = [
+        "//libs/prisma",
+        "@npm//graphql",
+        "@npm//prisma-client-lib",
         "@npm//@nestjs",
         "@npm//@types",
         "@npm//tslib",
@@ -21,22 +24,22 @@ ts_library(
 )
 
 nodejs_binary(
-    name = "api_gateway_server",
-    data = [":api_gateway"],
+    name = "accounts_service_server",
+    data = [":accounts_service"],
     entry_point = ":src/main.ts",
 )
 
 nodejs_image(
-    name = "api_gateway_image",
-    data = [":api_gateway"],
+    name = "accounts_service_image",
+    data = [":accounts_service"],
     entry_point = ":src/main.ts",
 )
 
 # bazel run --define push_tag=${IMAGE_TAG} --define push_repository=${REPOSITORY} //apps/api/gateway/src:api_gateway_container
 container_push(
-    name = "api_gateway_container",
+    name = "accounts_service_container",
     format = "Docker",
-    image = ":api_gateway_image",
+    image = ":accounts_service_image",
     registry = "gcr.io",
     repository = "$(push_repository)",
     tag = "$(push_tag)",

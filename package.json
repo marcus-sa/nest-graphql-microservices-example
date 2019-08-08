@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@angular/cli": "8.0.0",
+    "@bazel/typescript": "^0.35.0",
     "@nestjs/schematics": "^6.3.0",
     "@nestjs/testing": "^6.2.4",
     "@nrwl/jest": "8.1.2",

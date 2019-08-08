@@ -1,26 +1,24 @@
-apiVersion: skaffold/v1beta2
+apiVersion: skaffold/v1beta13
 kind: Config
+profiles:
+	- name: staging
+		helm:
+			releases:
+				- name: api-gateway
+				chartPath: charts/api-gateway
+				skipBuildDependencies: true
+				values:
+					image:
+						repository: api-gateway
+						tag: latest
+
 build:
+	googleCloudBuild:
+		projectId: {$PROJECT_ID}
 	artifacts:
 		- image: api-gateway
-			context: apps/api/gateway
-		- image: accounts-service
-			context: apps/services/accounts
-		- image: inventory-service
-			context: apps/services/inventory
-		- image: products-service
-			context: apps/services/products
-		- image: reviews-service
-			context: apps/services/reviews
-deploy:
-	kubectl:
-		manifests:
-			- apps/**/*.deployment.yml
-			- apps/**/*.service.yml
-			- apps/**/*.ingress.yml
-			- apps/**/*.namespace.yml
-			- apps/**/*.config-map.yml
-profiles:
-	- name: cloudbuild
-		build:
-			googleCloudBuild: {}
+			bazel:
+				target: //apps/api/gateway:api_gateway_image.tar
+
+googleCloudBuild:
+	projectId: ${PROJECT_ID}

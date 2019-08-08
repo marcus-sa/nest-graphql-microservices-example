@@ -1,0 +1,25 @@
+ingress:
+	enabled: true
+gateways:
+	istio-egressgateway:
+		enabled: true
+galley:
+	enabled: true
+sidecarInjectorWebhook:
+	enabled: true
+mixer:
+	enabled: true
+servicegraph:
+	enabled: true
+pilot:
+	sidecar: true
+tracing:
+	enabled: true
+grafana:
+	enabled: true
+prometheus:
+	enabled: true
+kiali:
+	enabled: true
+certmanager:
+	enabled: true

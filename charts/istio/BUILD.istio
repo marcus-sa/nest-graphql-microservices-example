@@ -1,0 +1,14 @@
+# This file is referenced from the WORKSPACE: https://github.com/tmc/rules_helm_example/blob/master/WORKSPACE#L15
+load("@com_github_tmc_rules_helm//helm:helm.bzl", "helm_chart")
+
+package(default_visibility = ["//visibility:public"])
+
+helm_chart(
+    name = "istio_init",
+    srcs = glob(["install/kubernetes/helm/istio-init/**"]),
+)
+
+helm_chart(
+    name = "istio",
+    srcs = glob(["install/kubernetes/helm/istio/**"]),
+)

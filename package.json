@@ -38,7 +38,7 @@
     "@apollo/federation": "^0.6.4",
     "@apollo/gateway": "^0.6.6",
     "@nestjs/graphql": "^6.2.4",
-    "apollo-server-express": "^2.6.3",
+    "apollo-server-express": "^2.14.2",
     "graphql": "^14.3.1",
     "graphql-tools": "^4.0.4",
     "prisma-binding": "^2.3.13",
